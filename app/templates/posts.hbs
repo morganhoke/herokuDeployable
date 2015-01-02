@@ -1,0 +1,14 @@
+<h2>
+I'm at the posts route.
+</h2>
+
+{{#each post in model}}
+    <h2>
+        {{post.title}}
+    </h2>
+    <p>
+        {{post.display_description}}
+    </p>
+{{#link-to 'post' post.id}}Let's see it{{/link-to}}
+
+{{/each}}
