@@ -1,0 +1,56 @@
+@media (max-width: 992px){
+.offCanvasNav{
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    left: -204px;
+    top: 0px;
+    border-right: 2px solid black;
+    background-color: white;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    z-index: 9000;
+}
+.offCanvasMoveButton{
+    position: relative;
+    span{
+        border: 0px;
+        padding: 5px;
+        font-size: 16px;
+    }
+}
+.offCanvasMoveButtonHidden{
+    left: 202px;
+}
+.offCanvasMoveButtonVisible{
+    left: 170px;
+}
+
+.slidein{
+    left: 0px;
+}
+
+.slideout{
+    left: -204px;
+}
+}
+
+@media (min-width: 992px){
+    .offCanvasNav{
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    border-right: 2px solid black;
+    background-color: white;
+    z-index: 9000;
+}
+.offCanvasMoveButton{
+    position: relative;
+    display: none;
+}
+}

@@ -1,14 +1,22 @@
-<h2>
-I'm at the posts route.
-</h2>
+<div class="row">
+    <div class="col-md-offset-3 col-md-6 col-lg-offset-2 col-lg-11">
+        <h1>
+        I'm at the posts route.
+        </h1>
+    </div>
+</div>
 
 {{#each post in model}}
-    <h2>
-        {{post.title}}
-    </h2>
-    <p>
-        {{post.display_description}}
-    </p>
-{{#link-to 'post' post.id}}Let's see it{{/link-to}}
-
-{{/each}}
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6 col-lg-offset-2 col-lg-11">
+        <h2>
+            {{post.title}}
+        </h2>
+        <p>
+            {{post.display_description}}
+        </p>
+        {{#link-to 'post' post.id}}Let's see it{{/link-to}}
+        <hr/>
+        </div>
+    </div>
+ {{/each}}
