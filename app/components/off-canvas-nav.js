@@ -5,8 +5,12 @@ var arrowClass = "glyphicon glyphicon-chevron-left offCanvasMoveButtonVisible";
 export default Ember.Component.extend({
     actions:{
         toggleMenuVisible: function(){
-            this.set('visible', !this.get('visible'));
-            if(this.get('visible')){
+            var componentContex = this;
+            $('.offCanvasNav').on('transitionend webkitTransitionEnd oTransitionEnd', function(){
+                componentContex.set('visible', !componentContex.get('visible'));
+                $('.offCanvasNav').off('transitionend webkitTransitionEnd oTransitionEnd');
+            });
+            if(!this.get('visible')){
                 $('.offCanvasNav').removeClass('slideout');
                 $('.offCanvasNav').addClass('slidein');
             }
@@ -24,5 +28,17 @@ export default Ember.Component.extend({
         else{
             return arrowClass;
         }
-    }.property('visible')
+    }.property('visible'),
+    setupWindowHandler: function(){
+        var componentContext = this;
+        window.addEventListener('click', function(event){
+            if(event.clientX > 204){
+                if(componentContext.get('visible')){
+                    if(window.matchMedia('(max-width: 992px)')){
+                        componentContext._actions['toggleMenuVisible'].apply(componentContext);
+                    }
+                }
+            }
+        }, true);
+    }.on('init')
 });
