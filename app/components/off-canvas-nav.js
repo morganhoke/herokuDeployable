@@ -29,15 +29,22 @@ export default Ember.Component.extend({
             return arrowClass;
         }
     }.property('visible'),
-    setupWindowHandler: function(){
+    setupEvents: function(){
         var componentContext = this;
-        window.addEventListener('click', function(event){
+        window.addEventListener('click', function(event){//Close the nav when you touch off it
             if(event.clientX > 204){
                 if(componentContext.get('visible')){
                     if(window.matchMedia('(max-width: 992px)')){
                         componentContext._actions['toggleMenuVisible'].apply(componentContext);
                     }
                 }
+            }
+        }, true);
+        window.addEventListener('hashchange', function(){//Close the nav on navigate
+            if(componentContext.get('visible')){
+                if(window.matchMedia('(max-width: 992px)')){
+                        componentContext._actions['toggleMenuVisible'].apply(componentContext);
+                    }
             }
         }, true);
     }.on('init')
