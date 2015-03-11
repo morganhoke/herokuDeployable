@@ -1,9 +1,10 @@
 module.exports = function(app) {
   var express = require('express');
   var postsRouter = express.Router();
-  var db = require('dbAdapter');
+  var db = require('../dbAdapter/index.js');
 
   postsRouter.get('/', function(req, res) {
+    console.log(db);
     db.getAllPosts(function(result){
         res.send({
           'posts': result 
